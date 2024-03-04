@@ -32,7 +32,7 @@ router.get('/todos/get/:id', async (req,res)=>{
 })
 router.post('/todos/complete/:id', async (req, res)=>{
     let id = req.params.id
-    let todo = await todoModel.find({_id:id})
+    let todo = await todoModel.findOne({_id:id})
     todo.status='complete'
     let updatedTodo = await todo.save()
     res.send({
